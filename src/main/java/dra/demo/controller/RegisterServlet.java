@@ -3,6 +3,7 @@ package dra.demo.controller;
 import dra.demo.model.User;
 import dra.demo.model.dao.MongoDBManager;
 import java.io.IOException;
+import java.io.Serializable;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +14,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author George
  */
-public class RegisterServlet extends HttpServlet {
+public class RegisterServlet extends HttpServlet implements Serializable{
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
