@@ -3,11 +3,10 @@ package dra.demo.model.dao;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.MongoClientURI;
-import com.mongodb.MongoCredential;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Filters.and;
-import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Filters.*;
 import dra.demo.model.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -26,8 +25,8 @@ public class MongoDBManager implements Serializable{
     private MongoClient mongoClient;    
     private CodecRegistry pojoCodecRegistry;
     private String authorization;
-    private ArrayList<String> clusters = new ArrayList<>();
-    private MongoDatabase database; //MongoDB super-class initializes and shares the MongoDatabase
+    private final ArrayList<String> clusters = new ArrayList<>();
+    private MongoDatabase database; 
     private MongoCollection<Document> collection;
 
  
