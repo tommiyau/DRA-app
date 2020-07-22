@@ -4,13 +4,14 @@ import com.mongodb.client.MongoCollection;
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 import dra.demo.model.*;
+import java.io.Serializable;
 import org.bson.Document;
 
 /*
  * @author George 
  * Connect to MongoDB Atlas and perform CRUD operations
  */
-public class MongoDBManager extends MongoDB {
+public class MongoDBManager extends MongoDB implements Serializable{
 
     private MongoCollection<Document> collection;
 
