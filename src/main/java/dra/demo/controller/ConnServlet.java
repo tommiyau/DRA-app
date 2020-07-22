@@ -25,7 +25,8 @@ public class ConnServlet extends HttpServlet implements Serializable{
         String role = request.getParameter("role");
         String db = request.getParameter("database");
         String collection = request.getParameter("collection");
-        manager = new MongoDBManager(adminemail, adminpass,role,db,collection);        
+        manager = new MongoDBManager(); 
+        manager.connect(adminemail, adminpass,role,db,collection);
         response.setContentType("text/html;charset=UTF-8");  
         HttpSession session = request.getSession();              
         String status = (manager != null) ? "Connected to mLab" : "Disconnected from mLab";        
