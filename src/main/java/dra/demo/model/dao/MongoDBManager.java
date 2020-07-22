@@ -27,20 +27,18 @@ public class MongoDBManager implements Serializable{
     private CodecRegistry pojoCodecRegistry;
     private String authorization;
     private ArrayList<String> clusters = new ArrayList<>();
-    private MongoCredential credential;
     private MongoDatabase database; //MongoDB super-class initializes and shares the MongoDatabase
     private MongoCollection<Document> collection;
 
  
     public MongoDBManager() { }
 
-    //connect to a collect of the existing db
+    //connect to a collection of the existing db
     public void connect(String owner, String password, String role, String db, String collection) {
         loadClusters(); //Load the database clusters
         this.mongoURI = mongoClientURI(owner, password, role, db); //Specify the mongoURI access rules
         this.mongoClient = new MongoClient(this.mongoURI); //create a mongoClient
         this.database = this.mongoClient.getDatabase(db); //create a database from mongoClient
-        this.credential = MongoCredential.createCredential(owner, db, password.toCharArray()); //Get the db credentials
         this.pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
                 fromProviders(PojoCodecProvider.builder().automatic(true).build()));//Register Java object for automatic mapping in Mongo Collection       
         this.database = database.withCodecRegistry(pojoCodecRegistry); //Apply the Java-object mapping to the current database
