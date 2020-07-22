@@ -36,7 +36,7 @@
                         </button>
                         <a class="navbar-brand" href="#Register-Div" data-toggle="tab" id="Register-Tab">Register</a>
                         <a class="navbar-brand" href="#Login-Div" data-toggle="tab" id="Login-Tab">Login</a>
-                        <a class="navbar-brand" href="#MLab-Div" data-toggle="tab" id="MLab-Tab">MongoDB Connect</a>
+                        <a class="navbar-brand" href="#MLab-Div" data-toggle="tab" id="MLab-Tab">MongoDB Status</a>
                         <div class="container">
                             <div class="led-box">
                                 <div class="<%= (status != null) ? "led-green" : "led-red"%>"></div>                                
