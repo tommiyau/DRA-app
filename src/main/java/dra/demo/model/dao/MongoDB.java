@@ -15,7 +15,7 @@ import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
 /**
- * mongodb+srv://Georges034302:<password>@cluster0-7c0ng.mongodb.net/<dbname>?retryWrites=true&w=majority
+ * 
  * @author George
  */
 public class MongoDB implements Serializable{

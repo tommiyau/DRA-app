@@ -11,7 +11,7 @@ import org.bson.Document;
  * @author George 
  * Connect to MongoDB Atlas and perform CRUD operations
  */
-public class MongoDBManager extends MongoDB implements Serializable{
+public class MongoDBManager extends MongoDB {
 
     private MongoCollection<Document> collection;
 
