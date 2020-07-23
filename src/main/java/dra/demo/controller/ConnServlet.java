@@ -2,7 +2,6 @@ package dra.demo.controller;
 
 import dra.demo.model.dao.*;
 import java.io.IOException;
-import java.io.Serializable;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +13,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author George
  */
-public class ConnServlet extends HttpServlet implements Serializable{
+public class ConnServlet extends HttpServlet {
     private MongoDBManager manager;  
      
     @Override 
