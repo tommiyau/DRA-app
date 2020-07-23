@@ -9,7 +9,7 @@ import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.*;
 import dra.demo.model.*;
 import java.io.Serializable;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import org.bson.Document;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
@@ -25,31 +25,34 @@ public class MongoDBManager implements Serializable{
     private MongoClient mongoClient;    
     private CodecRegistry pojoCodecRegistry;
     private String authorization;
-    private final ArrayList<String> clusters = new ArrayList<>();
+   // private final ArrayList<String> clusters = new ArrayList<>();
     private MongoDatabase database; 
-    private MongoCollection<Document> collection;
-
+    //private MongoCollection<Document> collection;
+    private String collection;
  
     public MongoDBManager() { }
 
     //connect to a collection of the existing db
     public void connect(String owner, String password, String role, String db, String collection) {
-        loadClusters(); //Load the database clusters
+        //loadClusters(); //Load the database clusters
         this.mongoURI = mongoClientURI(owner, password, role, db); //Specify the mongoURI access rules
         this.mongoClient = new MongoClient(this.mongoURI); //create a mongoClient
         this.database = this.mongoClient.getDatabase(db); //create a database from mongoClient
         this.pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
                 fromProviders(PojoCodecProvider.builder().automatic(true).build()));//Register Java object for automatic mapping in Mongo Collection       
         this.database = database.withCodecRegistry(pojoCodecRegistry); //Apply the Java-object mapping to the current database
-        this.collection = this.database.getCollection(collection);
+        //this.collection = this.database.getCollection(collection);
+        this.collection = collection;
+        
     }
-
+/*
     //Specify the database clusters
     private void loadClusters(){
         clusters.add("cluster0-shard-00-00-7c0ng.mongodb.net:27017");
         clusters.add("cluster0-shard-00-01-7c0ng.mongodb.net:27017");
         clusters.add("cluster0-shard-00-02-7c0ng.mongodb.net:27017");
     }
+ */
     
     //Specify the connection client URI
     private MongoClientURI mongoClientURI(String owner, String password, String role, String db){
@@ -57,9 +60,9 @@ public class MongoDBManager implements Serializable{
         MongoClientURI uri = new MongoClientURI(
                 ""
                 + "mongodb://" + owner + ":" + password + "@"
-                + clusters.get(0)+","
-                + clusters.get(1)+","
-                + clusters.get(2)+"/" + db + "?"
+                + "cluster0-shard-00-00-7c0ng.mongodb.net:27017"+","
+                + "cluster0-shard-00-01-7c0ng.mongodb.net:27017"+","
+                + "cluster0-shard-00-02-7c0ng.mongodb.net:27017"+"/" + db + "?"
                 + this.authorization
                 + ""
         );
@@ -68,16 +71,18 @@ public class MongoDBManager implements Serializable{
     
     //Create operation
     public void create(String name, String email, String password, String phone) {
+        MongoCollection<Document> users = this.database.getCollection(this.collection);
         Document entity = new Document("_id", email)
                 .append("name", name)
                 .append("password", password)
                 .append("phone", phone);
-        this.collection.insertOne(entity);
+        users.insertOne(entity);
     }
 
     //Read Operation
     public User user(String email, String password) {
-        Document doc = collection.find(and(eq("_id", email), eq("password", password))).first();
+        MongoCollection<Document> users = this.database.getCollection(this.collection);
+        Document doc = users.find(and(eq("_id", email), eq("password", password))).first();
         User user = new User((String) doc.get("name"), (String) doc.get("email"), (String) doc.get("password"), (String) doc.get("phone"));
         return user;
     }    
