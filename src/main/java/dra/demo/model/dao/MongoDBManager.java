@@ -3,6 +3,7 @@ package dra.demo.model.dao;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.MongoClientURI;
+import com.mongodb.WriteConcern;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Filters.and;
@@ -27,33 +28,23 @@ public class MongoDBManager implements Serializable{
     private String authorization;
    // private final ArrayList<String> clusters = new ArrayList<>();
     private MongoDatabase database; 
-    //private MongoCollection<Document> collection;
-    private String collection;
+    private MongoCollection<Document> users;
  
     public MongoDBManager() { }
 
     //connect to a collection of the existing db
-    public void connect(String owner, String password, String role, String db, String collection) {
-        //loadClusters(); //Load the database clusters
-        this.mongoURI = mongoClientURI(owner, password, role, db); //Specify the mongoURI access rules
-        this.mongoClient = new MongoClient(this.mongoURI); //create a mongoClient
-        this.database = this.mongoClient.getDatabase(db); //create a database from mongoClient
+    public void connect(String owner, String password, String role, String db, String collection) {        
+        this.mongoURI = mongoClientURI(owner, password, role, db); 
+        this.mongoClient = new MongoClient(this.mongoURI); 
+        mongoClient.setWriteConcern(WriteConcern.SAFE);
+        this.database = this.mongoClient.getDatabase(db); 
         this.pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
-                fromProviders(PojoCodecProvider.builder().automatic(true).build()));//Register Java object for automatic mapping in Mongo Collection       
-        this.database = database.withCodecRegistry(pojoCodecRegistry); //Apply the Java-object mapping to the current database
-        //this.collection = this.database.getCollection(collection);
-        this.collection = collection;
+                fromProviders(PojoCodecProvider.builder().automatic(true).build()));
+        this.database = database.withCodecRegistry(pojoCodecRegistry);  
+        users = this.database.getCollection(collection);
         
     }
-/*
-    //Specify the database clusters
-    private void loadClusters(){
-        clusters.add("cluster0-shard-00-00-7c0ng.mongodb.net:27017");
-        clusters.add("cluster0-shard-00-01-7c0ng.mongodb.net:27017");
-        clusters.add("cluster0-shard-00-02-7c0ng.mongodb.net:27017");
-    }
- */
-    
+
     //Specify the connection client URI
     private MongoClientURI mongoClientURI(String owner, String password, String role, String db){
         this.authorization = "ssl=true&replicaSet=Cluster0-shard-0&authSource=" + role + "&retryWrites=true";
@@ -70,8 +61,7 @@ public class MongoDBManager implements Serializable{
     }
     
     //Create operation
-    public void create(String name, String email, String password, String phone) {
-        MongoCollection<Document> users = this.database.getCollection(this.collection);
+    public void create(String name, String email, String password, String phone) {        
         Document entity = new Document("_id", email)
                 .append("name", name)
                 .append("password", password)
@@ -80,8 +70,7 @@ public class MongoDBManager implements Serializable{
     }
 
     //Read Operation
-    public User user(String email, String password) {
-        MongoCollection<Document> users = this.database.getCollection(this.collection);
+    public User user(String email, String password) {      
         Document doc = users.find(and(eq("_id", email), eq("password", password))).first();
         User user = new User((String) doc.get("name"), (String) doc.get("email"), (String) doc.get("password"), (String) doc.get("phone"));
         return user;
