@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/DRA-app"/>
+<Context path="/DRA-app" reloadable="false">
+    <Manager pathname="" />
+</Context>
