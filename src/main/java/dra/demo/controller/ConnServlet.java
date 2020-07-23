@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
  * @author George
  */
 public class ConnServlet extends HttpServlet {
-    private MongoDBManager manager;  
      
     @Override 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -24,9 +23,7 @@ public class ConnServlet extends HttpServlet {
         String role = request.getParameter("role");
         String db = request.getParameter("database");
         String collection = request.getParameter("collection");
-        manager = new MongoDBManager(); 
-        manager.connect(adminemail, adminpass,role,db,collection);
-        response.setContentType("text/html;charset=UTF-8");  
+        MongoDBManager manager = new MongoDBManager(adminemail, adminpass,role,db,collection); 
         HttpSession session = request.getSession();              
         String status = (manager != null) ? "Connected to mLab" : "Disconnected from mLab";        
         
@@ -35,6 +32,5 @@ public class ConnServlet extends HttpServlet {
            
         RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
         rs.forward(request, response);
-    }    
-  
+    }     
 }

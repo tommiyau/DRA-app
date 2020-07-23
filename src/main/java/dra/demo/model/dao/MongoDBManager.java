@@ -3,14 +3,11 @@ package dra.demo.model.dao;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.MongoClientURI;
-import com.mongodb.WriteConcern;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.*;
 import dra.demo.model.*;
-import java.io.Serializable;
-//import java.util.ArrayList;
 import org.bson.Document;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
@@ -21,28 +18,27 @@ import org.bson.codecs.pojo.PojoCodecProvider;
  * @author George 
  * 
  */
-public class MongoDBManager implements Serializable{
+public class MongoDBManager {
     private MongoClientURI mongoURI;
     private MongoClient mongoClient;    
     private CodecRegistry pojoCodecRegistry;
     private String authorization;
-   // private final ArrayList<String> clusters = new ArrayList<>();
     private MongoDatabase database; 
     private MongoCollection<Document> users;
  
-    public MongoDBManager() { }
+    public MongoDBManager(String owner, String password, String role, String db, String collection) { 
+        connect(owner, password,role,db,collection);
+    }
 
     //connect to a collection of the existing db
     public void connect(String owner, String password, String role, String db, String collection) {        
         this.mongoURI = mongoClientURI(owner, password, role, db); 
         this.mongoClient = new MongoClient(this.mongoURI); 
-        mongoClient.setWriteConcern(WriteConcern.SAFE);
         this.database = this.mongoClient.getDatabase(db); 
         this.pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
                 fromProviders(PojoCodecProvider.builder().automatic(true).build()));
         this.database = database.withCodecRegistry(pojoCodecRegistry);  
-        users = this.database.getCollection(collection);
-        
+        users = this.database.getCollection(collection);        
     }
 
     //Specify the connection client URI
