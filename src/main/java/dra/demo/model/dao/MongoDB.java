@@ -22,7 +22,7 @@ public class MongoDB {
     private MongoClient mongoClient;    
     private CodecRegistry pojoCodecRegistry;
     private String authorization;
-    private ArrayList<String> clusters = new ArrayList<>();
+    private final ArrayList<String> clusters = new ArrayList<>();
     protected MongoCredential credential;
     protected MongoDatabase database; //MongoDB super-class initializes and shares the MongoDatabase
     
@@ -31,8 +31,7 @@ public class MongoDB {
         loadClusters();        
         this.mongoURI = mongoClientURI(owner, password, role, db); //Specify the mongoURI access rules
         this.mongoClient = new MongoClient(this.mongoURI); //create a mongoClient
-        this.database = this.mongoClient.getDatabase(db); //create a database from mongoClient
-        this.credential = MongoCredential.createCredential(owner, db, password.toCharArray()); //Get the db credentials
+        this.database = this.mongoClient.getDatabase(db); //create a database from mongoClient       
         this.pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
                 fromProviders(PojoCodecProvider.builder().automatic(true).build()));//Register Java object for automatic mapping in Mongo Collection       
         this.database = database.withCodecRegistry(pojoCodecRegistry); //Apply the Java-object mapping to the current database
@@ -45,7 +44,7 @@ public class MongoDB {
         clusters.add("cluster0-shard-00-02-7c0ng.mongodb.net:27017");
     }
     
-    //Specify the connection client URI
+    //Specify the connection client URI using the database clusters
     private MongoClientURI mongoClientURI(String owner, String password, String role, String db){
         this.authorization = "ssl=true&replicaSet=Cluster0-shard-0&authSource=" + role + "&retryWrites=true";
         MongoClientURI uri = new MongoClientURI(
