@@ -23,12 +23,13 @@ public class ConnServlet extends HttpServlet {
         String role = request.getParameter("role");
         String db = request.getParameter("database");
         String collection = request.getParameter("collection");
+        String[] credentials = {adminemail, adminpass,role,db,collection};
         MongoDBManager manager = new MongoDBManager(adminemail, adminpass,role,db,collection); 
         HttpSession session = request.getSession();              
         String status = (manager != null) ? "Connected to mLab" : "Disconnected from mLab";        
         
         session.setAttribute("status", status); 
-        session.setAttribute("manager", manager);
+        session.setAttribute("credentials", credentials);
            
         RequestDispatcher rs = request.getRequestDispatcher("index.jsp");
         rs.forward(request, response);

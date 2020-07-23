@@ -26,8 +26,9 @@ public class RegisterServlet extends HttpServlet {
         String phone = request.getParameter("phone");
 
         User user = new User(name, email, password, phone);
+        String[] access = (String[]) session.getAttribute("credentials");
 
-        MongoDBManager manager = (MongoDBManager) session.getAttribute("manager");
+        MongoDBManager manager = new MongoDBManager(access[0], access[1], access[2], access[3], access[4]);
 
         if (!validator.validateEmail(email)) {
             session.setAttribute("emailErr", "Incorrect email format");

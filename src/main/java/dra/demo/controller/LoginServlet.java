@@ -22,8 +22,9 @@ public class LoginServlet extends HttpServlet {
         Validator validator = new Validator();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-
-        MongoDBManager manager = (MongoDBManager) session.getAttribute("manager");
+        String [] access = (String[]) session.getAttribute("credentials");
+        
+        MongoDBManager manager = new MongoDBManager(access[0],access[1],access[2],access[3],access[4]);
 
         if (!validator.validateEmail(email)) {
             session.setAttribute("emailErr", "Incorrect email format");            

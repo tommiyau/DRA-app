@@ -8,7 +8,6 @@ import com.mongodb.MongoClientSettings;
 import com.mongodb.MongoClientURI;
 import com.mongodb.MongoCredential;
 import com.mongodb.client.MongoDatabase;
-import java.io.Serializable;
 import java.util.ArrayList;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
@@ -18,7 +17,7 @@ import org.bson.codecs.pojo.PojoCodecProvider;
  * 
  * @author George
  */
-public class MongoDB implements Serializable{
+public class MongoDB {
     private MongoClientURI mongoURI;
     private MongoClient mongoClient;    
     private CodecRegistry pojoCodecRegistry;

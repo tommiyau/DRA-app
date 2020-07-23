@@ -1,8 +1,8 @@
 D:\GitHub\DRA-app\src\main\java\dra\demo\controller\LoginServlet.java
-D:\GitHub\DRA-app\src\main\java\dra\demo\model\dao\MongoDBManager_2.java
 D:\GitHub\DRA-app\src\main\java\dra\demo\model\User.java
 D:\GitHub\DRA-app\src\main\java\dra\demo\model\dao\MongoDB.java
 D:\GitHub\DRA-app\src\main\java\dra\demo\model\dao\MongoDBManager.java
+D:\GitHub\DRA-app\src\main\java\dra\demo\model\dao\MongoDBManager2.java
 D:\GitHub\DRA-app\src\main\java\dra\demo\controller\RegisterServlet.java
 D:\GitHub\DRA-app\src\main\java\dra\demo\controller\ConnServlet.java
 D:\GitHub\DRA-app\src\main\java\dra\demo\controller\Validator.java

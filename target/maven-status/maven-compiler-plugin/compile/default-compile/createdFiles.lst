@@ -1,4 +1,3 @@
-dra\demo\model\dao\MongoDBManager_2.class
 dra\demo\controller\RegisterServlet.class
 dra\demo\model\dao\MongoDBManager.class
 dra\demo\controller\Validator.class
@@ -6,3 +5,4 @@ dra\demo\controller\ConnServlet.class
 dra\demo\model\dao\MongoDB.class
 dra\demo\controller\LoginServlet.class
 dra\demo\model\User.class
+dra\demo\model\dao\MongoDBManager2.class
