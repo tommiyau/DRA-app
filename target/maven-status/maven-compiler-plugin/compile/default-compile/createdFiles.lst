@@ -5,3 +5,4 @@ dra\demo\controller\ConnServlet.class
 dra\demo\model\dao\MongoDB.class
 dra\demo\controller\LoginServlet.class
 dra\demo\model\User.class
+dra\demo\model\dao\PrettyJson.class

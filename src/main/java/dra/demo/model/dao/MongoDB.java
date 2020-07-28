@@ -27,7 +27,7 @@ public class MongoDB {
     protected MongoDatabase database; //MongoDB super-class initializes and shares the MongoDatabase
     
     //Setup the connection with the MongoDB Atlas 
-    protected MongoDB(String owner, String password, String role, String db) {        
+    public MongoDB(String owner, String password, String role, String db) {        
         loadClusters();        
         this.mongoURI = mongoClientURI(owner, password, role, db); //Specify the mongoURI access rules
         this.mongoClient = new MongoClient(this.mongoURI); //create a mongoClient
@@ -45,7 +45,7 @@ public class MongoDB {
     }
     
     //Specify the connection client URI using the database clusters
-    private MongoClientURI mongoClientURI(String owner, String password, String role, String db){
+    public MongoClientURI mongoClientURI(String owner, String password, String role, String db){
         this.authorization = "ssl=true&replicaSet=Cluster0-shard-0&authSource=" + role + "&retryWrites=true";
         MongoClientURI uri = new MongoClientURI(
                 ""
@@ -58,4 +58,5 @@ public class MongoDB {
         );
         return uri;
     }
+  
 }
