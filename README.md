@@ -1,4 +1,4 @@
-# ASD-Demo-app
+# DRA-Demo-app
 #Java Maven web-app
 #Regiser and Login options for users
 #User information is stored in xml
