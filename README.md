@@ -21,3 +21,13 @@ DAO module connects to MongoDB Atlas
 JUnit Test module tests MongoDB connection and Creat/Read
 DRA-app is deployed to Heroku and GAE 
 ```
+
+### DRA Pipeline Testing Steps:
+
+```
+[DRA stage 1 testing]
+[DRA stage 2 testing]
+[DRA stage 3 testing]
+[DRA stage 4 testing]
+```
+
