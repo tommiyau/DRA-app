@@ -24,7 +24,7 @@ public class MongoDBManagerTest extends TestCase{
     @Override
     public void setUp() {
         System.out.println(" >> Setting up MongoDB Manager Test variables: ");
-        manager = new MongoDBManager("Georges034302","darkside666","admin","dra-db","users");
+        manager = new MongoDBManager("drauser","drapass","admin","dra-db","users");
     }      
     
     /**

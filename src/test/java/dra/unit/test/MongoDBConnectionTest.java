@@ -25,8 +25,8 @@ public class MongoDBConnectionTest extends TestCase{
     @Override
     public void setUp() throws Exception {
         System.out.println(" >> Setting up MongoDB Test variables: ");
-        mongo = new MongoDB("Georges034302","darkside666","admin","dra-db");
-        clientURI = mongo.mongoClientURI("Georges034302","darkside666","admin","dra-db");
+        mongo = new MongoDB("drauser","drapass","admin","dra-db");
+        clientURI = mongo.mongoClientURI("drauser","drapass","admin","dra-db");
         this.client = new MongoClient(this.clientURI);
     }
 
