@@ -1,5 +1,23 @@
-# DRA-Demo-app
-#Java Maven web-app
-#Regiser and Login options for users
-#User information is stored in xml
-#Slack+GitHub Integration enabled
+## DRA app
+
+This Java Maven app is used to test the DRA pipeline 
+  
+### DRA Pipeline:
+
+```
+Repository: GitHub
+CI/CD: Codeship
+Multi-Cloud: Heroku, GAE
+Logging/Monitoring: Papertrail, StackDriver
+Communication: Slack
+Database: MongoDB Atlas
+```
+
+### Java Maven app:
+
+```
+MVC architecture application
+DAO module connects to MongoDB Atlas
+JUnit Test module tests MongoDB connection and Creat/Read
+DRA-app is deployed to Heroku and GAE 
+```
