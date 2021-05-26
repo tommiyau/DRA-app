@@ -25,10 +25,7 @@ DRA-app is deployed to Heroku and GAE
 ### DRA Pipeline Testing Steps:
 
 ```
-[DRA stage 1 testing]
-[DRA stage 2 testing]
-[DRA stage 3 testing]
-[DRA stage 4 testing]
-[DRA stage 5 testing]
+[Insert DRA stage testing here]
+
 ```
 

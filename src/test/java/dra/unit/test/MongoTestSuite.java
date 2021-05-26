@@ -1,13 +1,13 @@
 package dra.unit.test;
-
+/*
 import junit.framework.TestResult;
 import junit.framework.TestSuite;
-
+*/
 /**
  *
  * @author George
  */
-
+/*
 public class MongoTestSuite extends TestSuite {
 
     public static void main(String[] a) {        
@@ -18,3 +18,4 @@ public class MongoTestSuite extends TestSuite {
                 + "Number of failed cases = " + result.failureCount() + "\n");
     }
 }
+*/

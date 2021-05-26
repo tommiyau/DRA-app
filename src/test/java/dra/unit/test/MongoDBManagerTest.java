@@ -1,5 +1,5 @@
 package dra.unit.test;
-
+/*
 import dra.demo.model.User;
 import dra.demo.model.dao.MongoDBManager;
 import junit.framework.TestCase;
@@ -9,13 +9,13 @@ import org.junit.Test;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
-
+*/
 /**
  *
  * @author George
  */
 
-
+/*
 @FixMethodOrder(MethodSorters.JVM)
 public class MongoDBManagerTest extends TestCase{
     
@@ -52,3 +52,4 @@ public class MongoDBManagerTest extends TestCase{
     }  
     
 }
+*/

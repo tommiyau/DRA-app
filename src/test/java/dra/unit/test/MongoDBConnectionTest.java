@@ -1,5 +1,5 @@
 package dra.unit.test;
-
+/*
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import dra.demo.model.dao.MongoDB;
@@ -9,12 +9,12 @@ import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-
+/*
 /**
  *
  * @author George
  */
-
+/*
 //@FixMethodOrder(MethodSorters.JVM)
 public class MongoDBConnectionTest extends TestCase{
        
@@ -62,3 +62,4 @@ public class MongoDBConnectionTest extends TestCase{
         client.close();
     }
 }
+*/
