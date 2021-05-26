@@ -1,5 +1,5 @@
 package dra.unit.test;
-
+/*
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import dra.demo.model.dao.MongoDB;
@@ -9,12 +9,13 @@ import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-
+*/
 /**
  *
  * @author George
  */
-@FixMethodOrder(MethodSorters.JVM)
+/*
+//@FixMethodOrder(MethodSorters.JVM)
 public class MongoDBConnectionTest extends TestCase{
        
     private MongoDB mongo;
@@ -30,36 +31,30 @@ public class MongoDBConnectionTest extends TestCase{
         this.client = new MongoClient(this.clientURI);
     }
 
-    /**
-     * test if the connection is built with mongo db
-     */
+
+    //test if the connection is built with mongo db
     @Test
     public void testConnection() {  
         System.out.println(" >> Testing Mongo DB connection instance: ");
         assertNotNull(" >> Connection established with dra-db is refused",mongo);
-    }
-     
-    /**
-     * test if the URI is created and authorized using the clusters
-     */
+    }    
+    
+    //test if the URI is created and authorized using the clusters\
     @Test 
     public void testMongoClientURI(){  
         System.out.println(" >> Testing Mongo DB URI autorization: ");
         assertNotNull(" >> MongoClientURI is not created",clientURI);
     }
     
-    /**
-     * test if mongo db client is connect using the URI
-     */
+   
+    //test if mongo db client is connect using the URI     
     @Test 
     public void testMongoClient(){      
         System.out.println(" >> Testing client access to Mongo DB: ");
         assertNotNull(" >> MongoClient link with dra-db is not established",client);
-    }
+    }    
     
-    /**
-     * terminate the connection after the test
-     */
+    //terminate the connection after the test   
     @After
     @Override
     public void tearDown() {
@@ -67,3 +62,4 @@ public class MongoDBConnectionTest extends TestCase{
         client.close();
     }
 }
+*/
