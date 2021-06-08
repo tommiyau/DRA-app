@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="0" name="dra.unit.test.MongoDBManagerTest" time="0.548" errors="0" skipped="0">
+<testsuite tests="2" failures="0" name="dra.unit.test.MongoDBManagerTest" time="0.997" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_151\jre\bin"/>
@@ -64,6 +64,6 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="dra.unit.test.MongoDBManagerTest" name="testCollection" time="0.028"/>
-  <testcase classname="dra.unit.test.MongoDBManagerTest" name="testCreateRead" time="0.52"/>
+  <testcase classname="dra.unit.test.MongoDBManagerTest" name="testCollection" time="0.439"/>
+  <testcase classname="dra.unit.test.MongoDBManagerTest" name="testCreateRead" time="0.558"/>
 </testsuite>
