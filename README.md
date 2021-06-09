@@ -1,4 +1,4 @@
-## DRA app - brad22
+## DRA app - stage3
 
 This Java Maven app is used to test the DRA pipeline 
   
